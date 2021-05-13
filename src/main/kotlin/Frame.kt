@@ -13,20 +13,32 @@ class Frame(scores: IntArray, scorePosition: Int) {
         val scoreSecond = scores[scorePosition + 1]
 
         if (isSpareScore(scoreFirst, scoreSecond)) {
-            val bonusScore = scores[scorePosition + 2]
-            score = PERFECT_SCORE + bonusScore
+            calculateSpareFrameScore(scores, scorePosition)
             nextScorePosition = scorePosition + 2
             return
         }
         if (isStrikeScore(scoreFirst)) {
-            val bonusScore = scoreSecond + scores[scorePosition + 2]
-            score = PERFECT_SCORE + bonusScore
+            calculateStrikeFrameScore(scoreSecond, scores, scorePosition)
             nextScorePosition = scorePosition + 1
             return
         }
 
+        calculateOpenFrameScore(scoreFirst, scoreSecond, scorePosition)
+    }
+
+    private fun calculateOpenFrameScore(scoreFirst: Int, scoreSecond: Int, scorePosition: Int) {
         score = (scoreFirst + scoreSecond)
         nextScorePosition = scorePosition + 2
+    }
+
+    private fun calculateStrikeFrameScore(scoreSecond: Int, scores: IntArray, scorePosition: Int) {
+        val bonusScore = scoreSecond + scores[scorePosition + 2]
+        score = PERFECT_SCORE + bonusScore
+    }
+
+    private fun calculateSpareFrameScore(scores: IntArray, scorePosition: Int) {
+        val bonusScore = scores[scorePosition + 2]
+        score = PERFECT_SCORE + bonusScore
     }
 
     fun getscore(): Int {
