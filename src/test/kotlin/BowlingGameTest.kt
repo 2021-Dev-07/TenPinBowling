@@ -16,4 +16,15 @@ class BowlingGameTest {
         }
         assertEquals(20, bowlingGame?.getTotalScore())
     }
+
+    @Test
+    internal fun testSpareScores() {
+        bowlingGame?.addScore(8)
+        bowlingGame?.addScore(2)
+        bowlingGame?.addScore(6)
+        for(i in 1..17){
+            bowlingGame?.addScore(0)
+        }
+        assertEquals(22, bowlingGame?.getTotalScore())
+    }
 }
