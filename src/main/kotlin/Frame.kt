@@ -5,22 +5,28 @@ class Frame(scores: IntArray, scorePosition: Int) {
     private val  PERFECT_SCORE = 10
 
     init {
+        calculateScoreAndNextScorePosition(scores, scorePosition)
+    }
+
+    private fun calculateScoreAndNextScorePosition(scores: IntArray, scorePosition: Int) {
         val scoreFirst = scores[scorePosition]
         val scoreSecond = scores[scorePosition + 1]
-        if(isSpareScore(scoreFirst, scoreSecond)){
-            val bonusScore = scores[scorePosition+2]
+
+        if (isSpareScore(scoreFirst, scoreSecond)) {
+            val bonusScore = scores[scorePosition + 2]
             score = PERFECT_SCORE + bonusScore
-            nextScorePosition = scorePosition+2
+            nextScorePosition = scorePosition + 2
+            return
         }
-        else if (isStrikeScore(scoreFirst)){
-            val bonusScore = scoreSecond + scores[scorePosition+2]
+        if (isStrikeScore(scoreFirst)) {
+            val bonusScore = scoreSecond + scores[scorePosition + 2]
             score = PERFECT_SCORE + bonusScore
-            nextScorePosition = scorePosition+1
+            nextScorePosition = scorePosition + 1
+            return
         }
-        else {
-            score = (scoreFirst + scoreSecond)
-            nextScorePosition = scorePosition+2
-        }
+
+        score = (scoreFirst + scoreSecond)
+        nextScorePosition = scorePosition + 2
     }
 
     fun getscore(): Int {
