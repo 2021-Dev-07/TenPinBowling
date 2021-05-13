@@ -22,4 +22,11 @@ class FrameTest {
         frame?.addScore(5)
         assertEquals(5, frame?.getscore())
     }
+
+    @Test
+    internal fun testOpenFrameScore() {
+        frame?.addScore(3)
+        frame?.addScore(2)
+        assertEquals(5, frame?.getscore())
+    }
 }
