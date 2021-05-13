@@ -1,8 +1,12 @@
+import Frame.FrameConstants.PERFECT_SCORE
+
 class Frame(scores: IntArray, scorePosition: Int) {
 
-    private var score: Int = 0;
+    private var score: Int = 0
     private var nextScorePosition  = 0
-    private val  PERFECT_SCORE = 10
+    object FrameConstants {
+        const val PERFECT_SCORE = 10
+    }
 
     init {
         calculateScoreAndNextScorePosition(scores, scorePosition)
@@ -23,13 +27,12 @@ class Frame(scores: IntArray, scorePosition: Int) {
             return
         }
 
-        calculateOpenFrameScore(scoreFirst, scoreSecond, scorePosition)
+        calculateOpenFrameScore(scoreFirst, scoreSecond)
         nextScorePosition = scorePosition + 2
     }
 
-    private fun calculateOpenFrameScore(scoreFirst: Int, scoreSecond: Int, scorePosition: Int) {
+    private fun calculateOpenFrameScore(scoreFirst: Int, scoreSecond: Int) {
         score = (scoreFirst + scoreSecond)
-
     }
 
     private fun calculateStrikeFrameScore(scoreSecond: Int, scores: IntArray, scorePosition: Int) {
@@ -42,7 +45,7 @@ class Frame(scores: IntArray, scorePosition: Int) {
         score = PERFECT_SCORE + bonusScore
     }
 
-    fun getscore(): Int {
+    fun getScore(): Int {
         return score
     }
 
@@ -50,10 +53,10 @@ class Frame(scores: IntArray, scorePosition: Int) {
         return nextScorePosition
     }
 
-    fun isSpareScore(scoreFirst: Int, scoreSecond: Int) = (scoreFirst + scoreSecond) == PERFECT_SCORE
+    private fun isSpareScore(scoreFirst: Int, scoreSecond: Int) = (scoreFirst + scoreSecond) == PERFECT_SCORE
 
 
-    fun isStrikeScore(scoreFirst: Int) = scoreFirst == PERFECT_SCORE
+    private fun isStrikeScore(scoreFirst: Int) = scoreFirst == PERFECT_SCORE
 
 
 }

@@ -31,7 +31,7 @@ class FrameTest {
         scores[0] = 3
         scores[1] = 2
         frame = Frame(scores, 0)
-        assertEquals(5, frame?.getscore())
+        assertEquals(5, frame?.getScore())
     }
 
     @Test
@@ -41,7 +41,7 @@ class FrameTest {
         scores[1] = 7
         scores[2] = 5
         frame = Frame(scores, 0)
-        assertEquals(15, frame?.getscore())
+        assertEquals(15, frame?.getScore())
     }
 
     @Test
@@ -51,6 +51,6 @@ class FrameTest {
         scores[1] = 4
         scores[2] = 5
         frame = Frame(scores, 0)
-        assertEquals(19, frame?.getscore())
+        assertEquals(19, frame?.getScore())
     }
 }
