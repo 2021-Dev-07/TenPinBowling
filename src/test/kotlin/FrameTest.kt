@@ -6,7 +6,6 @@ import kotlin.test.assertEquals
 class FrameTest {
 
     var frame : Frame? = null
-    var scores  = IntArray(21)
 
     @BeforeEach
     internal fun setUp() {
@@ -18,30 +17,38 @@ class FrameTest {
         frame = null
     }
 
-    fun addScores(score : Int){
-        for (i in 1..20){
+    fun addScores(score : Int, from : Int , count : Int) : IntArray{
+        var scores = IntArray(21)
+        for (i in from until count){
             scores[i] = score
         }
+        return scores;
     }
 
     @Test
     internal fun testAddScore() {
-        addScores(5)
+        var scores = addScores(5, 0, 20)
         frame = Frame(scores, 0)
         assertEquals(5, frame?.getscore())
     }
 
     @Test
     internal fun testOpenFrameScore() {
-       /* frame?.addScore(3)
-        frame?.addScore(2)*/
+        var scores = addScores(0, 2, 20)
+        scores[0] = 3
+        scores[1] = 2
+        frame = Frame(scores, 0)
         assertEquals(5, frame?.getscore())
     }
 
     @Test
     internal fun testSpareFrameScore() {
-        //frame?.addScore(8, 2, 3)
-        assertEquals(13, frame?.getscore())
+        var scores = addScores(0, 3, 20)
+        scores[0] = 3
+        scores[1] = 7
+        scores[3] = 5
+        frame = Frame(scores, 0)
+        assertEquals(15, frame?.getscore())
     }
 
     @Test
