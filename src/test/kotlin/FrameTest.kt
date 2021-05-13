@@ -29,4 +29,13 @@ class FrameTest {
         frame?.addScore(2)
         assertEquals(5, frame?.getscore())
     }
+
+    @Test
+    internal fun testSpareFrameScore() {
+        frame?.addScore(8)
+        frame?.addScore(2)
+        frame?.addScore(5)
+        frame?.addScore(1)
+        assertEquals(15, frame?.getscore())
+    }
 }
