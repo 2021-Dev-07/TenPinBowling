@@ -32,10 +32,7 @@ class FrameTest {
 
     @Test
     internal fun testSpareFrameScore() {
-        frame?.addScore(8)
-        frame?.addScore(2)
-        frame?.addScore(5)
-        frame?.addScore(1)
-        assertEquals(15, frame?.getscore())
+        frame?.addScore(8, 2, 3)
+        assertEquals(13, frame?.getscore())
     }
 }
