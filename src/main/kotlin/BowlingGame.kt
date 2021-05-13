@@ -14,7 +14,7 @@ class BowlingGame {
         for (i in 1..20 step 2){
             var frame = Frame(scores, scoreposition)
             grandTotal += frame.getscore()
-            scoreposition++
+            scoreposition = frame.getNextPosition()
         }
         return grandTotal
     }
