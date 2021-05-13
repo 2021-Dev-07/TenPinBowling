@@ -1,9 +1,10 @@
-class Frame {
+class Frame(scores: IntArray, scorePosition: Int) {
 
     private var score: Int = 0;
     private var nextScorePosition  = 0
+    private val  PERFECT_SCORE = 10
 
-    constructor(scores : IntArray , scorePosition : Int){
+    init {
         if(isSpareScore(scores[scorePosition], scores[scorePosition+1])){
             score = 10 + scores[scorePosition+2]
             nextScorePosition = scorePosition+2
@@ -16,7 +17,6 @@ class Frame {
             score = (scores[scorePosition] + scores[scorePosition+1])
             nextScorePosition = scorePosition+2
         }
-
     }
 
     fun getscore(): Int {
@@ -27,17 +27,10 @@ class Frame {
         return nextScorePosition
     }
 
-    fun isSpareScore(scoreFirst: Int, scoreSecond: Int): Boolean {
-        if ((scoreFirst + scoreSecond) == 10)
-            return true
-        return false
-    }
+    fun isSpareScore(scoreFirst: Int, scoreSecond: Int) = (scoreFirst + scoreSecond) == PERFECT_SCORE
 
-    fun isStrikeScore(scoreFirst: Int): Boolean {
-        if (scoreFirst == 10)
-            return true
-        return false
-    }
+
+    fun isStrikeScore(scoreFirst: Int) = scoreFirst == PERFECT_SCORE
 
 
 }
