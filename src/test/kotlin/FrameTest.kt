@@ -26,13 +26,6 @@ class FrameTest {
     }
 
     @Test
-    internal fun testAddScore() {
-        var scores = addScores(5, 0, 20)
-        frame = Frame(scores, 0)
-        assertEquals(5, frame?.getscore())
-    }
-
-    @Test
     internal fun testOpenFrameScore() {
         var scores = addScores(0, 2, 20)
         scores[0] = 3
