@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
@@ -9,14 +10,28 @@ class BowlingGameTest {
         bowlingGame = BowlingGame()
     }
 
+    @AfterEach
+    internal fun tearDown() {
+
+    }
+
+    fun getScorelist(score : Int, from : Int, count : Int) : IntArray{
+        var scores = IntArray(21)
+        for (i in from until count){
+            scores[i] = score
+        }
+        return scores;
+    }
+
     @Test
     internal fun testAllScores() {
         for(i in 1..20){
             bowlingGame?.addScore(1)
         }
+        assertEquals(20, bowlingGame?.getTotalScore())
     }
 
-   /* @Test
+    @Test
     internal fun testSpareScores() {
         bowlingGame?.addScore(8)
         bowlingGame?.addScore(2)
@@ -25,7 +40,7 @@ class BowlingGameTest {
             bowlingGame?.addScore(0)
         }
         assertEquals(22, bowlingGame?.getTotalScore())
-    }*/
+    }
 
 
 

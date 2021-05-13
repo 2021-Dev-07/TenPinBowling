@@ -8,13 +8,15 @@ class BowlingGame {
         scoreposition++
     }
 
-    /*fun getTotalScore(): Int {
-        for (i in 1..20){
-
+    fun getTotalScore(): Int {
+        var grandTotal  = 0
+        scoreposition = 0
+        for (i in 1..20 step 2){
+            var frame = Frame(scores, scoreposition)
+            grandTotal += frame.getscore()
+            scoreposition++
         }
-        var frame = Frame()
-        frame.addsc
-        return scores
-    }*/
+        return grandTotal
+    }
 
 }
