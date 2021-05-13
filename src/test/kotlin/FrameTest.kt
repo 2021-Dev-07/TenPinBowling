@@ -35,4 +35,10 @@ class FrameTest {
         frame?.addScore(8, 2, 3)
         assertEquals(13, frame?.getscore())
     }
+
+    @Test
+    internal fun testStrikeFrame() {
+        frame?.addScore(10, 2, 3)
+        assertEquals(15, frame?.getscore())
+    }
 }
