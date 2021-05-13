@@ -24,11 +24,12 @@ class Frame(scores: IntArray, scorePosition: Int) {
         }
 
         calculateOpenFrameScore(scoreFirst, scoreSecond, scorePosition)
+        nextScorePosition = scorePosition + 2
     }
 
     private fun calculateOpenFrameScore(scoreFirst: Int, scoreSecond: Int, scorePosition: Int) {
         score = (scoreFirst + scoreSecond)
-        nextScorePosition = scorePosition + 2
+
     }
 
     private fun calculateStrikeFrameScore(scoreSecond: Int, scores: IntArray, scorePosition: Int) {
