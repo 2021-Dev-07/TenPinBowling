@@ -12,8 +12,8 @@ class BowlingGameTest {
     @Test
     internal fun testAllScores() {
         for(i in 1..20){
-            bowlingGame?.addScore(3)
+            bowlingGame?.addScore(1)
         }
-        assertEquals(3, bowlingGame?.getTotalScore())
+        assertEquals(20, bowlingGame?.getTotalScore())
     }
 }
