@@ -46,14 +46,18 @@ class FrameTest {
         var scores = addScores(0, 3, 20)
         scores[0] = 3
         scores[1] = 7
-        scores[3] = 5
+        scores[2] = 5
         frame = Frame(scores, 0)
         assertEquals(15, frame?.getscore())
     }
 
     @Test
     internal fun testStrikeFrame() {
-        //frame?.addScore(10, 2, 3)
-        assertEquals(15, frame?.getscore())
+        var scores = addScores(0, 3, 20)
+        scores[0] = 10
+        scores[1] = 4
+        scores[2] = 5
+        frame = Frame(scores, 0)
+        assertEquals(19, frame?.getscore())
     }
 }
