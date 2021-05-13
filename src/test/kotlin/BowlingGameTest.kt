@@ -77,4 +77,11 @@ class BowlingGameTest {
         bowlingGame?.addScore(3)
         assertEquals(36, bowlingGame?.getTotalScore())
     }
+
+    @Test
+    internal fun testPerfectGame() {
+        for(i in 1..12)
+            bowlingGame?.addScore(10)
+        assertEquals(300, bowlingGame?.getTotalScore())
+    }
 }
