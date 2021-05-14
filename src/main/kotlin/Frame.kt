@@ -1,6 +1,6 @@
 import Frame.FrameConstants.PERFECT_SCORE
 
-class Frame(scores: IntArray, scorePosition: Int) {
+class Frame(rolls: IntArray, scorePosition: Int) {
 
     private var score: Int = 0
     private var nextScorePosition  = 0
@@ -9,20 +9,21 @@ class Frame(scores: IntArray, scorePosition: Int) {
     }
 
     init {
-        calculateScoreAndNextScorePosition(scores, scorePosition)
+        calculateScoreAndNextScorePosition(rolls, scorePosition)
     }
 
-    private fun calculateScoreAndNextScorePosition(scores: IntArray, scorePosition: Int) {
-        val scoreFirst = scores[scorePosition]
-        val scoreSecond = scores[scorePosition + 1]
+    private fun calculateScoreAndNextScorePosition(rolls: IntArray, scorePosition: Int) {
+        val scoreFirst = rolls[scorePosition]
+        val scoreSecond = rolls[scorePosition + 1]
 
         if (isSpareScore(scoreFirst, scoreSecond)) {
-            calculateSpareFrameScore(scores, scorePosition)
+            calculateSpareFrameScore(rolls, scorePosition)
             nextScorePosition = scorePosition + 2
             return
         }
+
         if (isStrikeScore(scoreFirst)) {
-            calculateStrikeFrameScore(scoreSecond, scores, scorePosition)
+            calculateStrikeFrameScore(scoreSecond, rolls, scorePosition)
             nextScorePosition = scorePosition + 1
             return
         }

@@ -1,20 +1,20 @@
 class BowlingGame {
 
-    var scores  = IntArray(21)
-    var scoreposition = 0;
+    private var rolls  = IntArray(21)
+    private var rollCount = 0
 
-    fun addScore(score : Int) {
-        scores[scoreposition] = score
-        scoreposition++
+    fun addRoll(roll : Int) {
+        rolls[rollCount] = roll
+        rollCount++
     }
 
     fun getTotalScore(): Int {
         var grandTotal  = 0
-        var scoreposition = 0
+        var scorePosition = 0
         for (i in 1..20 step 2){
-            var frame = Frame(scores, scoreposition)
+            val frame = Frame(rolls, scorePosition)
             grandTotal += frame.getScore()
-            scoreposition = frame.getNextPosition()
+            scorePosition = frame.getNextPosition()
         }
         return grandTotal
     }
@@ -31,34 +31,34 @@ class BowlingGame {
      */
 
     fun parseDigitFrom(str: String): ArrayList<Int> {
-        var list = ArrayList<Int>()
-        var strwithnoWhitespace = str.replace("\\s".toRegex(), "")
-        var currentIndex = 0;
-        for (element in strwithnoWhitespace) {
+        val list = ArrayList<Int>()
+        val stringNoWhitespace = str.replace("\\s".toRegex(), "")
+        var currentIndex = 0
+        for (element in stringNoWhitespace) {
             if(element.equals('X', true)){
                 list.add(10)
-            } else if(element.equals('/')){
-                list.add(10-(list.get(currentIndex-1)))
-            }else if(element.equals('-')){
+            } else if(element == '/'){
+                list.add(10-(list[currentIndex-1]))
+            }else if(element == '-'){
                 list.add(0)
             }else{
                 list.add(element.digitToInt())
             }
             currentIndex++
         }
-        return list;
+        return list
     }
 
 }
 
 
-fun main(args : Array<String>) {
+fun main() {
 
     println("enter valid sequence of Score")
     val scoreInput = readLine()!!
-    var bowlingGame = BowlingGame()
-    var list = bowlingGame.parseDigitFrom(scoreInput)
-    list.forEach { bowlingGame.addScore(it) }
+    val bowlingGame = BowlingGame()
+    val list = bowlingGame.parseDigitFrom(scoreInput)
+    list.forEach { bowlingGame.addRoll(it) }
     println("Total Score is : "+bowlingGame.getTotalScore())
 
 }
